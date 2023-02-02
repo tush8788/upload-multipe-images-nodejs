@@ -1,0 +1,19 @@
+<div style="margin-bottom: 10px;">
+    <form action="/user/upload-images" method="post" enctype="multipart/form-data">
+        <input type="email" name="email" placeholder="email" required>
+        <input type="file" name="allImages" multiple>
+        <input type="submit">
+    </form>
+</div>
+<div class="container" style="display: flex; width: 100%; height: auto; flex-wrap: wrap; justify-content: space-around;">
+    <%if(locals.userDATA){%>
+        <%for(let data of userDATA){%>
+            <%for(let img of data.images){%>
+                <div class="img-container" >
+                    <img src=<%=img%> alt="not found" width:"150" height="150">
+                    <p>Owner : <%=data.email%></p>
+                </div>
+            <%}%>
+        <%}%>
+    <%}%>
+</div>
